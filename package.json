@@ -1,0 +1,40 @@
+{
+  "name": "@ccw-api/request",
+  "version": "1.2.1",
+  "description": "a minified request header generation util in order to replace ccw axios",
+  "license": "MIT",
+  "author": "MengFuzi",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      },
+      "require": {
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.cts"
+      }
+    }
+  },
+  "scripts": {
+    "test": "tsx --test",
+    "build": "tsdown",
+    "prepublishOnly": "npm run test & npm run build"
+  },
+  "dependencies": {
+    "blueimp-md5": "^2.19.0"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/blueimp-md5": "^2.18.2",
+    "@types/node": "^26.1.1",
+    "tsdown": "^0.22.9",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
