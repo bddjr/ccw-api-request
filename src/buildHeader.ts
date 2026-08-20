@@ -1,4 +1,4 @@
-import md5 from "blueimp-md5";
+import md5 from "tinyhmacmd5";
 import { getToken } from ".";
 import { getHmacKey } from "./healthCheck";
 import { getRandomId } from "./randomId";

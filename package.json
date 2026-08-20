@@ -25,14 +25,13 @@
     "prepublishOnly": "npm run test & npm run build"
   },
   "dependencies": {
-    "blueimp-md5": "^2.19.0"
+    "tinyhmacmd5": "^0.1.8"
   },
   "files": [
     "dist",
     "LICENSE"
   ],
   "devDependencies": {
-    "@types/blueimp-md5": "^2.18.2",
     "@types/node": "^26.1.1",
     "tsdown": "^0.22.9",
     "tsx": "^4.23.1",
