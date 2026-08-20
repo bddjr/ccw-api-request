@@ -6,7 +6,7 @@ export default defineConfig({
     esm: {},
     iife: {
       deps: {
-        onlyBundle: ["blueimp-md5"],
+        onlyBundle: ["tinyhmacmd5"],
         alwaysBundle() {
           return true;
         },

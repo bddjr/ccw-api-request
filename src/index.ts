@@ -12,10 +12,10 @@ export function getToken() {
 }
 
 export const requestUtils = {
-  async post<Res = any>(url: string, args = null) {
-    return await request<Res>(url, args, "POST");
+  post<Res = any>(url: string, args?: any) {
+    return request<Res>(url, args, "POST");
   },
-  async get<Res = any>(url: string) {
-    return await request<Res>(url, null, "GET");
+  get<Res = any>(url: string) {
+    return request<Res>(url, null, "GET");
   },
 };

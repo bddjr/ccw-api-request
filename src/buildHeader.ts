@@ -1,20 +1,24 @@
-import md5 from "blueimp-md5";
+import md5 from "tinyhmacmd5";
 import { getToken } from ".";
 import { getHmacKey } from "./healthCheck";
 import { getRandomId } from "./randomId";
 const guestId = getRandomId();
 export async function buildHeaders(
   headers: Record<string, string>,
-  args: any,
+  body: string | undefined,
   timeStamp = Date.now(),
 ) {
-  if (getToken().length > 0) {
-    headers["Token"] = getToken();
+  const token = getToken()
+  if (token) {
+    headers["Token"] = token;
   } else {
     headers["Guest-Id"] = guestId;
   }
-  const hmacKey = await getHmacKey(headers);
-  headers["B"] = `${timeStamp}`;
-  headers["A"] = md5(`ccw${JSON.stringify(args)}${timeStamp}`, hmacKey);
+  if (body) {
+    const hmacKey = await getHmacKey(headers);
+    const b = `${timeStamp}`
+    headers["B"] = b;
+    headers["A"] = md5(`ccw${body}${b}`, hmacKey);
+  }
   return headers;
 }
