@@ -1,6 +1,6 @@
 {
   "name": "@ccw-api/request",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "a minified request header generation util in order to replace ccw axios",
   "license": "MIT",
   "author": "MengFuzi",
@@ -19,6 +19,12 @@
     }
   },
   "unpkg": "./dist/index.iife.js",
+  "jsdelivr": "./dist/index.iife.js",
+  "cdn": "./dist/index.iife.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-ccw/ccw-api-request.git"
+  },
   "scripts": {
     "test": "tsx --test",
     "build": "tsdown",

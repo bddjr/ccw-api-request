@@ -7,22 +7,27 @@ export async function request<Res>(
 ): Promise<{
   data: Res;
 }> {
+  const requestBody = args ? JSON.stringify(args) : undefined;
   const headers = await buildHeaders(
     {
       "Content-Type": "application/json",
     },
-    args,
+    requestBody,
   );
-  const res = await fetch(url, {
-    body: method == "POST" ? JSON.stringify(args) : null,
+  const response = await fetch(url, {
+    body: requestBody,
     headers,
     method: method,
     credentials: "include",
   });
-  return await res.json().then((res) => {
-    if (res.code == "200") {
-      return { data: res };
-    }
-    throw new Error(`ccw request failed: ${res.msg}`, { cause: res });
-  });
+  const result = await response.json() as {
+    body: any,
+    code: string,
+    msg: string | null,
+    status: number,
+  }
+  if (result.code != "200") {
+    throw new Error(`ccw request failed: ${result.msg}`, { cause: result });
+  }
+  return { data: result as Res };
 }

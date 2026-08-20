@@ -10,12 +10,12 @@ test("expect sign to be verified", async () => {
   setToken(id);
   const headers = await buildHeaders(
     {},
-    {
+    JSON.stringify({
       accessKey: "677a0edbb5dd9840c78c5f58",
       primaryKey: "677a0edbb5dd9840c78c5f58-u",
       secondaryKey: "0",
       filterKeys: ["0"],
-    },
+    }),
     b,
   );
   assert.equal(headers.A, a);
