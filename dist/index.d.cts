@@ -2,7 +2,7 @@
 declare function setToken(t: string): void;
 declare function getToken(): string;
 declare const requestUtils: {
-  post<Res = any>(url: string, args?: null): Promise<{
+  post<Res = any>(url: string, args?: any): Promise<{
     data: Res;
   }>;
   get<Res = any>(url: string): Promise<{
